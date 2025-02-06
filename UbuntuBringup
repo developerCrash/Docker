@@ -1,0 +1,39 @@
+docker run -p 22:22 --name anilub -it mylinuximage /bin/bash 
+
+
+Dockerfile 
+==========
+# Use a minimal Ubuntu base image
+FROM ubuntu:latest
+
+# Update package list and install essential tools
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    nano \
+    vim \
+    git \
+    openssh-server \
+    net-tools \
+    iputils-ping \
+    ca-certificates \
+    tcpdump
+
+# Set the locale
+RUN locale-gen en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8
+
+# Create a non-root user
+RUN useradd -ms /bin/bash anil && echo "anil" | passwd -d anil
+
+# Set working directory
+WORKDIR /home/anil
+
+# Expose SSH port
+EXPOSE 22
+
+# Copy SSH key to authorized_keys
+COPY id_rsa.pub /home/anil/.ssh/authorized_keys
+RUN chmod 600 /home/anil/.ssh/authorized_keys
+
+# Set the default command to start SSH
+CMD ["sshd", "-D"]
