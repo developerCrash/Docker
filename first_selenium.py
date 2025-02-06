@@ -8,6 +8,10 @@ Run in interactive mode
 ========================
 docker run -it <image> /bin/bash
 
+Run with Volume 
+================
+docker run --rm -it --name selenium-app --network="host" -v $(pwd):/app selenium-app
+
 Dockerfile
 ===========
 FROM python:3.9
