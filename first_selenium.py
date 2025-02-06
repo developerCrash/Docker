@@ -4,6 +4,10 @@ docker pull selenium/standalone-chrome
 
 docker run -d -p 4444:4444 --name selenium-hub selenium/standalone-chrome
 
+Run in interactive mode 
+========================
+docker run -it <image> /bin/bash
+
 Dockerfile
 ===========
 FROM python:3.9
