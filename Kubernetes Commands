@@ -20,3 +20,30 @@ kubectl get namespaces
 kubectl get pods -A >> this will give the list of all running pods along with associated namespaces 
 
 kubectl get services -A >> lists all the seervices 
+
+kubectl get deployments
+
+kubectl get deployments -n development >> lists deployments only from the namespace "development"
+
+
+kubectl get pods -n development
+
+kubectl delete pod "pod-name" -n development
+
+
+kubectl describe pod <pod-name> -n development
+
+kubectl get pods -n development -o wide >>> Shows extra info like IP address inside the kubernetes cluster 
+
+ssh to the pod:
+
+kubectl exec -it <pod-name> -- /bin/sh
+
+inside busybox interactive shell
+=================================
+wget 
+wget <ip-address>:3000 >>> port used for deployment
+
+
+kubectl logs <pod-name> -n development >>> Displays the logs of a pod 
+
