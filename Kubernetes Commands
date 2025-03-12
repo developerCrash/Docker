@@ -8,36 +8,30 @@ minikube delete
 Check if docker is installed
 ============================
 docker >> just give docker and it should display some information 
-
-
 kubectl cluster-info  >>> this gives the ip address of the kubernetes control plane (where it is running). If its running on the local machine then ip address will be local host else ip will be that of a server where it is running 
 
 kubectl get nodes 
-
 kubectl get namespaces 
 
-
-kubectl get pods -A >> this will give the list of all running pods along with associated namespaces 
-
-kubectl get services -A >> lists all the seervices 
-
-kubectl get deployments
-
-kubectl get deployments -n development >> lists deployments only from the namespace "development"
-
-
+kubectl get pods -A >>> this will give the list of all running pods along with associated namespaces 
 kubectl get pods -n development
-
+kubectl get pods -n development -o wide >>> Shows extra info like IP address inside the kubernetes cluster 
+kubectl describe pod <pod-name> -n development
 kubectl delete pod "pod-name" -n development
 
+kubectl exec -it <pod-name> -- /bin/sh
 
-kubectl describe pod <pod-name> -n development
+kubectl get services -A >> lists all the services 
 
-kubectl get pods -n development -o wide >>> Shows extra info like IP address inside the kubernetes cluster 
+kubectl get deployments
+kubectl get deployments -n development >> lists deployments only from the namespace "development"
+kubectl logs <pod-name> -n development >>> Displays the logs of a pod 
+
+
 
 ssh to the pod:
 
-kubectl exec -it <pod-name> -- /bin/sh
+
 
 inside busybox interactive shell
 =================================
@@ -45,5 +39,5 @@ wget
 wget <ip-address>:3000 >>> port used for deployment
 
 
-kubectl logs <pod-name> -n development >>> Displays the logs of a pod 
+
 
