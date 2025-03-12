@@ -1,0 +1,22 @@
+minikube start 
+kubectl get nodes 
+minikube update-check 
+minikube stop
+minikube delete 
+
+
+Check if docker is installed
+============================
+docker >> just give docker and it should display some information 
+
+
+kubectl cluster-info  >>> this gives the ip address of the kubernetes control plane (where it is running). If its running on the local machine then ip address will be local host else ip will be that of a server where it is running 
+
+kubectl get nodes 
+
+kubectl get namespaces 
+
+
+kubectl get pods -A >> this will give the list of all running pods along with associated namespaces 
+
+kubectl get services -A >> lists all the seervices 
